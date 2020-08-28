@@ -10,10 +10,20 @@ export class UsersListComponent implements OnInit {
 
   usersList = [];
 
-  constructor(public userService: UsersService) { }
+  constructor(
+    public userService: UsersService
+  ) { }
 
   ngOnInit(): void {
     this.usersList = this.userService.getUsersList();
+  }
+
+  search(query: string) {
+    this.usersList = this.userService.findUser(query);
+  }
+
+  sort(direction: string){
+    this.usersList = this.userService.sortUsers(direction);
   }
 
 }
